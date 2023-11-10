@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+
+    - name: Ensure /etc/crontab contains word
+      ansible.builtin.lineinfile:
+        path: /etc/crontab
+        regexp: '^.*word.*$'
+        state: absent
+      check_mode: yes
+      changed_when: false
+      register: out
+
+    - debug:
+        msg: "Yes, line exists."
+      when: out.found
+
+    - debug:
+        msg: "Line does NOT exist."
+      when: not out.found
