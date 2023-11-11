@@ -14,3 +14,6 @@ regexp: '^.*word.*$'
 ```
 ## Diferential
 In the task "debug" The code return a message about the word existence.
+
+#### Thank you
+By Matheus Fazolli
